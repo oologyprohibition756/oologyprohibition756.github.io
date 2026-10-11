@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پایگاه تحلیل راهبردی | استراتژی، توسعه و دکترین نظامی</title>
+    
+    <!-- فونت زیبای وزیرمتن برای ظاهر حرفه‌ای و خوانا -->
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <!-- کتابخانه آیکون‌ها -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* متغیرهای رنگی - تم عملیات شبانه (Night Ops) */
+        :root {
+            --bg-base: #030303;
+            --bg-surface: #0f110c;
+            --bg-card: #151811;
+            --primary-green: #3f4a2e;
+            --accent-green: #798c50;
+            --neon-green: #a3bf60;
+            --text-main: #d9dbd0;
+            --text-muted: #828a73;
+            --border-color: #272e1c;
+        }
+
+        /* شخصی‌سازی اسکرول‌بار مرورگر */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-base);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-green);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-green);
+        }
+
+        /* تنظیمات پایه */
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.8;
+            font-size: 15px;
+            overflow-x: hidden;
+        }
+
+        /* انیمیشن‌های ورود */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* هدر استراتژیک */
+        header {
+            background: linear-gradient(180deg, #10120d 0%, var(--bg-base) 100%);
+            padding: 60px 20px 30px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent-green);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* افکت رادار در پس‌زمینه هدر */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, transparent 20%, var(--bg-base) 80%),
+                        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(121, 140, 80, 0.03) 3px, rgba(121, 140, 80, 0.03) 3px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        header .header-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeUp 1s ease-out;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 0 0 15px rgba(163, 191, 96, 0.3);
+            letter-spacing: -1px;
+        }
+
+        header p.subtitle {
+            color: var(--accent-green);
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        /* منوی ناوبری چسبان */
+        nav {
+            background-color: rgba(15, 17, 12, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 8px 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul li a:hover {
+            color: var(--neon-green);
+            background-color: rgba(121, 140, 80, 0.1);
+        }
+
+        /* ساختار شبکه‌ای (Grid) */
+        .container {
+            max-width: 1250px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 30px;
+        }
+
+        .section-title {
+            color: #fff;
+            font-size: 22px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--neon-green);
+        }
+
+        /* کارت‌های محتوا (مقالات) */
+        article {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: fadeUp 0.8s ease-out backwards;
+        }
+
+        article:nth-child(2) { animation-delay: 0.2s; }
+        article:nth-child(3) { animation-delay: 0.4s; }
+
+        article:hover {
+            border-color: var(--accent-green);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transform: translateY(-3px);
+        }
+
+        /* تگ‌های دسته‌بندی روی کارت‌ها */
+        .badge {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            background: var(--primary-green);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-size: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        article h3 {
+            color: var(--neon-green);
+            font-size: 24px;
+            margin: 0 0 15px 0;
+            padding-left: 80px; /* فضای خالی برای تگ */
+        }
+
+        .meta {
+            display: flex;
+            gap: 15px;
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        article p {
+            color: #b8b8b8;
+            text-align: justify;
+            margin-bottom: 25px;
+        }
+
+        /* استایل تاکتیکال تصاویر (دید در شب/مادون قرمز شبیه‌سازی شده) */
+        .tactical-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            /* این افکت باعث می‌شود عکس‌های معمولی رنگ سبز نظامی و وهم‌آلود بگیرند */
+            filter: sepia(0.8) hue-rotate(50deg) saturate(2) brightness(0.7) contrast(1.2);
+            transition: filter 0.5s ease;
+        }
+
+        .tactical-img:hover {
+            filter: sepia(0) hue-rotate(0deg) saturate(1) brightness(1) contrast(1);
+        }
+
+        /* دکمه‌های عملیاتی */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background-color: var(--primary-green);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border-color: var(--neon-green);
+            color: var(--neon-green);
+        }
+
+        /* بخش سایدبار */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .widget {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 6px;
+        }
+
+        .widget h4 {
+            color: #fff;
+            margin-top: 0;
+            border-bottom: 1px dashed var(--accent-green);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            text-align: center;
+        }
+
+        .profile-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-green);
+            padding: 3px;
+            margin-bottom: 15px;
+        }
+
+        .skills .skill-item {
+            margin-bottom: 15px;
+        }
+
+        .skills .skill-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .skills .progress-bar {
+            height: 6px;
+            background: var(--bg-base);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skills .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-green), var(--neon-green));
+        }
+
+        /* بخش رسانه و ویدیو */
+        .media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .video-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            color: var(--accent-green);
+            font-size: 40px;
+            border: 1px dashed var(--accent-green);
+        }
+
+        /* فوتر */
+        footer {
+            background: var(--bg-surface);
+            border-top: 2px solid var(--primary-green);
+            padding: 40px 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            font-size: 20px;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--neon-green);
+        }
+
+        /* واکنش‌گرایی برای موبایل */
+        @media (max-width: 992px) {
+            .container { grid-template-columns: 1fr; }
+            .media-grid { grid-template-columns: 1fr; }
+            .tactical-img { height: 250px; }
+            header h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <h1>پایگاه تحلیل راهبردی و فرماندهی</h1>
+            <p class="subtitle">توسعه فردی، مدیریت بحران و بررسی دکترین نظامی</p>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#military"><i class="fa-solid fa-crosshairs"></i> تحلیل نظامی</a></li>
+            <li><a href="#career"><i class="fa-solid fa-briefcase"></i> رهبری سازمانی</a></li>
+            <li><a href="#media"><i class="fa-solid fa-video"></i> رسانه هوش مصنوعی</a></li>
+            <li><a href="#daily"><i class="fa-solid fa-terminal"></i> لاگ عملیاتی</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        
+        <!-- ستون اصلی مطالب -->
+        <main>
+            
+            <section id="military">
+                <h2 class="section-title"><i class="fa-solid fa-shield-halved"></i> پرونده‌های راهبردی و تسلیحاتی</h2>
+                
+                <article>
+                    <span class="badge">ویژه</span>
+                    <h3>دکترین نبرد نامتقارن: تکامل شبکه پهپادی سپاه</h3>
+                    <div class="meta">
+                        <span><i class="fa-regular fa-calendar"></i> ۲۲ مهر ۱۴۰۵</span>
+                        <span><i class="fa-solid fa-folder-open"></i> استراتژی نظامی</span>
+                        <span><i class="fa-regular fa-clock"></i> ۱۲ دقیقه مطالعه</span>
+                    </div>
+                    
+                    <!-- عکس نظامی - افکت دید در شب روی آن اعمال شده -->
+                    <img src="https://images.unsplash.com/photo-1590856029826-c7a73142bbf1?q=80&w=1000&auto=format&fit=crop" alt="پهپاد شناسایی" class="tactical-img">
+                    
+                    <p>در دکترین نظامی نوین ایران، توسعه پهپادهای انتحاری (Loitering Munitions) و پرنده‌های شناسایی رادارگریز به عنوان ستون فقرات نبرد نامتقارن شناخته می‌شود. ادغام هوش مصنوعی در سیستم‌های پردازش تصویر پادهای شناسایی، امکان تشخیص لحظه‌ای تحرکات زرهی دشمن را فراهم کرده است. در این تحلیل، عملکرد سیستم‌های هدایت‌شونده سری «شاهد» و «مهاجر» در عبور از لایه‌های پدافندی چندگانه بررسی می‌شود.</p>
+                    <a href="#" class="btn">مشاهده کامل پرونده <i class="fa-solid fa-arrow-left"></i></a>
+                </article>
+
+                <article>
+                    <span class="badge">تجهیزات</span>
+                    <h3>چابک‌سازی یگان‌های زرهی و واکنش سریع</h3>
+                    <div class="meta">
+                        <span><i class="fa-regular fa-calendar"></i> ۱۸ مهر ۱۴۰۵</span>
+                        <span><i class="fa-solid fa-folder-open"></i> ادوات زمینی</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1599818815124-780c10b240ff?q=80&w=1000&auto=format&fit=crop" alt="نیروهای ویژه زرهی" class="tactical-img">
+                    <p>تغییر ماهیت جنگ‌های منطقه‌ای نشان داده است که لشکرهای سنگین زرهی به شدت در برابر حملات ضدزره هدایت‌شونده آسیب‌پذیرند. تجهیز تیپ‌های واکنش سریع نیروی زمینی به نفربرهای ارتقایافته، سامانه‌های اخلالگر الکترونیکی (جمر) و تسلیحات انفرادی ماژولار، توان بقاپذیری نیروها را در محیط‌های آلوده به شدت افزایش داده است.</p>
+                    <a href="#" class="btn">ادامه مطلب <i class="fa-solid fa-arrow-left"></i></a>
+                </article>
+            </section>
+
+            <section id="media">
+                <h2 class="section-title"><i class="fa-solid fa-satellite-dish"></i> تولیدات رسانه‌ای (هوش مصنوعی)</h2>
+                <div class="media-grid">
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <h4 style="color: var(--neon-green); margin:0 0 10px 0;">بررسی تحولات خاورمیانه</h4>
+                        <p style="font-size: 13px; color: var(--text-muted);">تولید صفر تا صد اسکریپت، صداگذاری و تدوین با ابزارهای AI.</p>
+                    </div>
+                    <div class="video-card">
+                        <div class="video-placeholder">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                        <h4 style="color: var(--neon-green); margin:0 0 10px 0;">تجهیزات انفرادی تکاوران</h4>
+                        <p style="font-size: 13px; color: var(--text-muted);">روایتی مستندگونه با گویندگی هوش مصنوعی (مشابه پیر پارسی).</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="career">
+                <h2 class="section-title"><i class="fa-solid fa-chess-knight"></i> فرماندهی در محیط کسب‌وکار</h2>
+                <article>
+                    <h3>پیاده‌سازی اصول دیسیپلین نظامی در تیم‌های استارتاپی</h3>
+                    <p>یکی از بزرگترین چالش‌های تیم‌های جوان، فقدان زنجیره فرماندهی شفاف و تاب‌آوری در برابر شکست است. به عنوان فردی که با اصول نظامی آشناست، شما می‌توانید مفهوم «وحدت فرماندهی» و «گزارش‌دهی دقیق» را در فرآیندهای چابک (Agile) شرکت‌ها پیاده کنید. در این مقاله به شما می‌آموزم چگونه بدون ایجاد فضای پادگانی، یک تیم منسجم، سریع و مسئولیت‌پذیر بسازید.</p>
+                    <a href="#" class="btn">مطالعه مقاله <i class="fa-solid fa-arrow-left"></i></a>
+                </article>
+            </section>
+
+        </main>
+
+        <!-- ستون کناری (سایدبار اطلاعات) -->
+        <aside>
+            <div class="widget profile-container">
+                <img src="https://images.unsplash.com/photo-1542458428-14236dbbc38c?q=80&w=400&auto=format&fit=crop" alt="پروفایل نویسنده">
+                <h3 style="color: #fff; margin: 10px 0 5px;">پروفایل عملیاتی</h3>
+                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.6; text-align: justify;">
+                    تحلیلگر راهبردی، توسعه‌دهنده زیرساخت و تولیدکننده محتوا با هوش مصنوعی. تمرکز من بر تلاقی تکنولوژی، مدیریت بحران و دکترین نظامی است.
+                </p>
+            </div>
+
+            <div class="widget skills">
+                <h4>مهارت‌های کلیدی</h4>
+                
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>تحلیل دکترین و استراتژی نظامی</span>
+                        <span>۹۵٪</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 95%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>تولید محتوا با هوش مصنوعی (AI)</span>
+                        <span>۸۸٪</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 88%;"></div></div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span>رهبری تیم و مدیریت بحران</span>
+                        <span>۸۰٪</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                </div>
+            </div>
+
+            <div class="widget" style="background: rgba(121, 140, 80, 0.1); border-color: var(--primary-green);">
+                <h4 style="color: var(--neon-green); border-bottom-color: var(--primary-green);">عضویت در شبکه توزیع</h4>
+                <p style="font-size: 13px; color: var(--text-main); margin-bottom: 15px;">برای دریافت آخرین تحلیل‌های امنیتی و نظامی، ایمیل خود را در سیستم ثبت کنید.</p>
+                <input type="email" placeholder="آدرس ایمیل..." style="width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid var(--border-color); background: var(--bg-base); color: #fff; border-radius: 4px; margin-bottom: 10px; outline: none; font-family: inherit;">
+                <button class="btn" style="width: 100%; justify-content: center;">ثبت در سیستم</button>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+        <p style="margin: 0; font-size: 13px;">تمامی حقوق مادی و معنوی، تحلیل‌ها و داده‌ها برای این پایگاه محفوظ است. © ۱۴۰۵</p>
+    </footer>
+
+</body>
+</html>
